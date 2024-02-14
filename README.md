@@ -96,3 +96,9 @@ ColumnTransformer is a preprocessing class provided by scikit-learn, a popular m
 
 
 =============================================================================================
+
+
+Once we completed the part in jupyter notebook we are going to proceed to modular coding. 
+
+
+=============================================================================================

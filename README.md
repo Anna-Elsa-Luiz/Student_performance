@@ -102,3 +102,41 @@ Once we completed the part in jupyter notebook we are going to proceed to modula
 
 
 ============================================================================================
+
+
+**Data Ingestion**
+
+The main aim is to read the dataset from specific data source. And split the data into train and test 
+
+
+" from dataclasses import dataclass "
+The dataclass decorator from the dataclasses module in Python provides a way to automatically generate special methods for classes. It's particularly useful for creating classes that primarily store data and don't have much behavior. 
+
+
+
+all the outputs will automatically stored in the artifacts folder 
+
+    train_data_path: str = os.path.join('artifacts','train.csv')
+    test_data_path: str = os.path.join('artifacts','test.csv')
+    raw_data_path: str = os.path.join('artifacts','raw.csv')
+From the above steps data ingestion components now know where to save the train path , test path  and raw path . 
+
+============================================================================================
+
+If you are not defining varibales you can use @dataclass . But if you are defining some functions inside the class , use the constructor part .  
+
+
+def initiate_data_ingestion(self): 
+In the function defined above , 
+if you stored the data in some databases , you can connect and read it from here . for eg: MongoDB
+
+
+
+test the data ingestion file and artifacts folder is being created 
+
+============================================================================================
+
+now include .artfacts in .gitignore so that its not get saved .
+
+
+============================================================================================

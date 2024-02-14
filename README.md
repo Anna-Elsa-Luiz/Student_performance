@@ -183,23 +183,126 @@ The main aim of Data Transformation part is to do data cleaning , data encoding 
 
 
 -----------------------------------------
+In DataTransformation also we are going to do the exception handling.
 
+-----------------------------------------
+we have constructed a dataingestion_config class in Dataingestion.py  we must constrct a  similar config in datatransformation.py also 
 
 -----------------------------------------
 
+def get_data_transformer_object(self):
+* It is to create all my pickle files which will be responsible for  converting categorical to numerical , or if I want to perform   Standardscaler and all.  
 
 -----------------------------------------
 
+Then provided the numerical features =[] and categorical features =[]
+-----------------------------------------
+An object is being created from Pipeline()
+Numerical pipline is initialized 
 
+for handling missing values as well standardizing the numerical features we have applied the numerical pipeline 
 
 -----------------------------------------
+numerical_pipeline = Pipeline(
+                 steps=[
+                     ('imputer',SimpleImputer(strategy ='median')),
+                     ('scaler',StandardScaler())
+                       ]
+                                           )
+-----------------------------------------
+categorical_pipeline = Pipeline(
+                 
+                 steps= [
+                     ('imputer',SimpleImputer(strategy='most_frequent')),
+                     ('one_hot_encoder',OneHotEncoder()),
+                     ('scaler',StandardScaler(with_mean=False))
+                         ]
+                                             )
+-----------------------------------------
+**Numerical and Categorical Pipelines Explained:**
 
+In machine learning and data science, we often work with datasets that contain a mix of numerical features (represented by numbers) and categorical features (represented by non-numerical values like text, dates, or categories). To prepare these features for effective use in machine learning models, we need to apply different preprocessing techniques, depending on the data type. This is where numerical and categorical pipelines come in.
+
+### Numerical Pipelines:
+
+* Purpose: Handle numerical features by applying specific transformations that are suitable for their continuous nature.
+
+
+
+Common Steps:
+* Imputation: Fill in missing values using strategies like mean/median imputation or more advanced techniques.
+* Scaling: Rescale numerical features to a common range (e.g., min-max scaling, standardization) to prevent features with larger scales from dominating the model.
+* Feature Engineering: Create new features by combining existing numerical features (e.g., ratios, differences, products).
+* Dimensionality Reduction: If high dimensionality is an issue, techniques like Principal Component Analysis (PCA) can reduce the number of features.
+
+
+#### Categorical Pipelines:
+
+Purpose: Prepare categorical features for use in models, as they cannot be directly processed by most algorithms.
+
+
+Common Steps:
+* Encoding: Convert categorical values into numerical representations suitable for the model. Common techniques include one-hot encoding, label encoding, and target encoding.
+* Handling Ordinal Data: If categories have a natural order (e.g., clothing sizes), encode them in a way that preserves this order (e.g., integer or frequency encoding).
+* Dimensionality Reduction: If there are many unique categories, consider techniques like feature hashing or embedding to reduce the number of dimensions.
 -----------------------------------------
 
------------------------------------------
+preprocessor = ColumnTransformer(
 
------------------------------------------
+              ("num_pipeline",numerical_pipeline,numerical_columns),
+              ("cat_pipeline",categorical_pipeline,categorical_columns)  
+                                            )
+**(pipeline name , what pipeline it is , coloumn type)**
 
------------------------------------------
+-------------------------------------------
+Then defined a function 
 
------------------------------------------
+def initiate_data_transformation(self,train_path,test_path):Th
+
+for reading the train and test dataset ,numerical and target column
+
+
+#### Steps:
+
+1. Read Data:
+
+- Reads training and testing data from CSV files using pd.read_csv.
+- Logs informational messages using logging.info.
+
+
+2. Get Preprocessing Object:
+
+- Calls self.get_data_transformer_object() to obtain a preprocessing object (which is likely created elsewhere and encapsulates preprocessing steps).
+
+3. Identify Columns:
+
+- Defines target_column_name (the column to predict, e.g., "math_score").
+- Defines num_columns (list of numerical feature columns, e.g., ["writing_score", "reading_score"]).
+
+4. Separate Features and Target:
+
+- Creates input_feature_train_df by dropping the target column from the training data.
+- Creates target_feature_train_df by selecting the target column from the training data.
+- Similarly, creates input_feature_test_df and target_feature_test_df for the testing data.
+
+5. Apply Preprocessing:
+
+- Logs a message indicating preprocessing application.
+- Uses preprocessing_obj.fit_transform on the training input features to fit the preprocessor and transform the data.
+- Uses preprocessing_obj.transform on the testing input features to transform the data without refitting (since it was fitted on the training data).
+
+6. Combine Features and Target:
+
+- Concatenates the transformed input features and the target column (as NumPy arrays) into train_arr and test_arr for training and testing, respectively.
+
+7. Save Preprocessing Object (Optional):
+
+- Logs a message about saving the preprocessing object.
+- Uses save_object (likely a custom function or library) to save the preprocessing_obj to a file specified by self.data_transformation_config.preprocessor_obj_file_path.
+------------------------------------------
+
+
+
+
+
+----------------------------------------

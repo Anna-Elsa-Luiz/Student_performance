@@ -196,6 +196,8 @@ def get_data_transformer_object(self):
 -----------------------------------------
 
 Then provided the numerical features =[] and categorical features =[]
+
+
 -----------------------------------------
 An object is being created from Pipeline()
 Numerical pipline is initialized 
@@ -228,7 +230,7 @@ categorical_pipeline = Pipeline(
                                              )
 
 
-                                             
+
 -----------------------------------------
 **Numerical and Categorical Pipelines Explained:**
 

@@ -75,4 +75,24 @@ Gonna write our own ecxception
 
 The sys module in Python is a built-in module that provides access to system-specific parameters and functions. It can be used to get information about the Python interpreter, the operating system, and the environment in which the Python script is running. It can also be used to manipulate different parts of the Python runtime environment.
 
+=============================================================================================
 
+Performed All the necessary Data cleaning , Feature Engineering and Data visualization part EDA.ipynb file 
+
+
+=============================================================================================
+
+Then proceeded to Model_training.ipynb in which we are gonna train the model 
+
+=============================================================================================
+
+While we are encoding the categorical features , since there are very less number of features we can use **one hot encoding** . If there are more number of features we can use  **target guided ordinal encoding**
+
+=============================================================================================
+
+we are then going to use the pipeline for all the process instead of doing it separately 
+
+ColumnTransformer is a preprocessing class provided by scikit-learn, a popular machine learning library in Python. It allows you to apply different transformations to different columns of your dataset, enabling you to construct a single transformer that handles multiple preprocessing steps simultaneously.
+
+
+=============================================================================================

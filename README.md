@@ -203,13 +203,21 @@ Numerical pipline is initialized
 for handling missing values as well standardizing the numerical features we have applied the numerical pipeline 
 
 -----------------------------------------
+
+
 numerical_pipeline = Pipeline(
                  steps=[
                      ('imputer',SimpleImputer(strategy ='median')),
                      ('scaler',StandardScaler())
                        ]
                                            )
+
+
+
+
 -----------------------------------------
+
+
 categorical_pipeline = Pipeline(
                  
                  steps= [
@@ -218,6 +226,9 @@ categorical_pipeline = Pipeline(
                      ('scaler',StandardScaler(with_mean=False))
                          ]
                                              )
+
+
+                                             
 -----------------------------------------
 **Numerical and Categorical Pipelines Explained:**
 

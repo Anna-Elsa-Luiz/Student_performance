@@ -154,3 +154,52 @@ now include .artfacts in .gitignore so that its not get saved .
 
 
 -----------------------------------------
+
+Now moving  to **DataTransformation**
+
+The main aim of Data Transformation part is to do data cleaning , data encoding and feature scaling , feature engineering , dimensionality reduction, data imputation. 
+
+
+-----------------------------------------
+
+* from sklearn.compose import ColumnTransformer
+**ColumnTransformer** is used to apply different preprocessing transformations to different columns or subsets of columns within a dataset. It helps in organizing and applying various transformations in a structured manner, especially when dealing with mixed data types (e.g., numerical and categorical) in machine learning pipelines.
+
+* from sklearn.impute import SimpleImputer
+**SimpleImputer** is used to handle missing values (NaNs) in the dataset by replacing them with a specified value (e.g., mean, median, or most frequent value). It's a simple and commonly used technique for data preprocessing to ensure that the dataset is ready for analysis or modeling.
+
+
+* from sklearn.pipeline import Pipeline
+**Pipeline** is used to sequentially apply a series of transformations or processing steps to the data. It's particularly useful for organizing complex workflows, such as preprocessing data (e.g., imputation, scaling) and fitting models (e.g., classifiers, regressors) in a single coherent pipeline. This helps in encapsulating and automating the entire machine learning workflow.
+
+
+* from sklearn.preprocessing import OneHotEncoder,StandardScaler
+
+
+**OneHotEncoder** is used to encode categorical variables into a numerical format, particularly when the categorical variables have no ordinal relationship (i.e., they're nominal). It creates binary dummy variables for each category, making it suitable for use with machine learning algorithms.
+
+
+**StandardScaler** is used for feature scaling, which ensures that numerical features are on the same scale (i.e., have zero mean and unit variance). It's important for many machine learning algorithms, particularly those sensitive to the scale of input features, such as gradient descent-based algorithms.
+
+
+-----------------------------------------
+
+
+-----------------------------------------
+
+
+-----------------------------------------
+
+
+
+-----------------------------------------
+
+-----------------------------------------
+
+-----------------------------------------
+
+-----------------------------------------
+
+-----------------------------------------
+
+-----------------------------------------

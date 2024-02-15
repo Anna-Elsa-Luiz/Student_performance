@@ -417,22 +417,95 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
 
 -------------------------------------------
 
-add import statement of r2_score in utils.py 
-
-
-
+Add import statement of r2_score in utils.py 
+and import  save_object and evaluate_models in model_trainer.py
 
 -----------------------------------------------
 
+In  model_trainer , found out the best model and given a condition with r2_score
 
+saved the file path in model_trainer.py 
 
+Dumped the best model 
 
-
+finally , predicted output r2_score and best model
 
 -----------------------------------------------
 
+Then in dataingestion import the modelTrainerconfig and ModelTrainer.  
+
+Initializes the data transformation in dataingestion.py 
+train_arr and test_arr are returned from the datatransformation , going to save them in dataingestion
 
 
+Then initialise the modeltrainer in dataingestion.py 
 
-
+And finally print the r2_score as the output 
 ------------------------------------------------
+
+Since we havenot done the hyperparameter tuning , going to do them. 
+
+using 
+para=param[list(models.keys())[i]]
+
+gs = GridSearchCV(model,para,cv=3)
+gs.fit(X_train,y_train)
+
+model.set_params(**gs.best_params_)
+model.fit(X_train,y_train)
+
+in utils.py
+
+
+And defined the best hyperparameters of each of them  in model_trainer.py 
+
+ params={
+                "Decision Tree": {
+                    'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                    # 'splitter':['best','random'],
+                    # 'max_features':['sqrt','log2'],
+                },
+                "Random Forest":{
+                    # 'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                 
+                    # 'max_features':['sqrt','log2',None],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "Gradient Boosting":{
+                    # 'loss':['squared_error', 'huber', 'absolute_error', 'quantile'],
+                    'learning_rate':[.1,.01,.05,.001],
+                    'subsample':[0.6,0.7,0.75,0.8,0.85,0.9],
+                    # 'criterion':['squared_error', 'friedman_mse'],
+                    # 'max_features':['auto','sqrt','log2'],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "Linear Regression":{},
+                "XGBRegressor":{
+                    'learning_rate':[.1,.01,.05,.001],
+                    'n_estimators': [8,16,32,64,128,256]
+                },
+                "CatBoosting Regressor":{
+                    'depth': [6,8,10],
+                    'learning_rate': [0.01, 0.05, 0.1],
+                    'iterations': [30, 50, 100]
+                },
+                "AdaBoost Regressor":{
+                    'learning_rate':[.1,.01,0.5,.001],
+                    # 'loss':['linear','square','exponential'],
+                    'n_estimators': [8,16,32,64,128,256]
+                }
+                
+            }
+
+
+
+
+----------------------------------
+
+
+
+----------------------------------
+
+
+
+-------------------------------------

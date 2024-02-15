@@ -315,7 +315,124 @@ for reading the train and test dataset ,numerical and target column
 ------------------------------------------
 
 
+save_object function will be in the utils.py 
 
+where utils.py is the file in which all the common functionalities
+
+now in the utils file define save_object 
+add dill in the requirements.txt too
+
+with the help of save_object in the utils.py  file we are going to save the pickle file in the hard disk
 
 
 ----------------------------------------
+
+
+* from src.utils import save_object
+Add the above import statement in data_transformation.py
+
+
+* from src.components.data_transformation import DataTransformation
+* from src.components.data_transformation import DataTransformationConfig
+Add the above import statement in data_ingestion.py
+
+
+------------------------------------------
+
+Now we are going to train the model in the model_trainer.py 
+
+we are using the model: Linear regression , DecisionTree Regression , Kneighbors Regressor  and ensemble techniques like Adaboost , catboost , Xgboost , Gradient boosting 
+
+
+
+------------------------------------------
+after importing the required libraries , modules 
+
+created a dataclass for modeltrainerconfig  for saving the pkl file 
+this basicallly gives whatever input I required with model training 
+
+then created another class Modeltrainer 
+
+
+
+-------------------------------------------
+
+Then in the class defined a function , def  
+
+initiate_model_trainer(self,train_array,test_array,preprocessor_path):
+          
+          try:
+
+            logging.info('Splitting training and test input data')
+              X_train , y_train , X_test , y_test = (
+                   train_array[:,:,-1],
+                   train_array[:,-1],
+                   test_array[:,:,-1],
+                   test_array[:,-1]
+                                                    )
+            models = {
+                "Random Forest": RandomForestRegressor(),
+                "Decision Tree": DecisionTreeRegressor(),
+                "Gradient Boosting": GradientBoostingRegressor(),
+                "Linear Regression": LinearRegression(),
+                "XGBRegressor": XGBRegressor(),
+                "CatBoosting Regressor": CatBoostRegressor(verbose=False),
+                "AdaBoost Regressor": AdaBoostRegressor(),
+            } 
+
+            model_report:dict = evaluate_model(X_train=X_train,y_train=y_train,x_test= X_test,y_test=y_test , models=models)
+
+train test splitting has been done in the model trainer and the models were defined. 
+
+--------------------------------------------
+
+Then in the utils file create the  evaluate_model()  as follows;
+
+
+def evaluate_model(X_train,y_train,X_test,y_test,models):
+    try:
+        report ={}  
+
+        for i in range(len(list(models))):
+
+            model = list(model.values())[i]
+
+            model.fit(X_train,y_train)
+
+            y_train_pred = model.predict(X_train)
+
+            y_test_pred = model.predict(X_test)
+
+            train_model_score = r2_score(y_train,y_train_pred)
+            test_model_score =r2_score(y_test,y_test_pred)
+
+            report[list(model.keys())[i]]=test_model_score
+
+        return report    
+
+    except Exception as e:
+        raise CustomException(e, sys)
+
+
+
+-------------------------------------------
+
+add import statement of r2_score in utils.py 
+
+
+
+
+-----------------------------------------------
+
+
+
+
+
+
+-----------------------------------------------
+
+
+
+
+
+------------------------------------------------

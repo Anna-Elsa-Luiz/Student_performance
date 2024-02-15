@@ -502,10 +502,111 @@ And defined the best hyperparameters of each of them  in model_trainer.py
 
 ----------------------------------
 
+Now we are going to create the prediction pipeline
 
+Going to create a simple web application which will be interacting with any input we are goin to give.
+----------------------------------
+
+created a app.py file 
+
+
+create a folder templates in which create two files index.html and home.html 
+-------------------------------------
+
+Then in the prediction pipleine 
+
+imported the necessary library 
+created a predictpipleine class and then the customdata which we given the app.py 
+
+this customdata class will be responsible in mapping all the inputs that given in the html to the backend with the particular values 
+
+-------------------------------------------
+
+we are defining the input variables to be collected from the user to predict the output 
+
+then defined a function to conert the input varibales into dataframe.
+
+-------------------------------------------------
+
+Then defined a funt predict in class predictpipleine:
+and saved the model.pkl file and the preprocessor which is responsible for feature scaling , handling categorical features,...
+
+load_object is used to import the pkl file and load it. 
+
+
+Then in utils.py file , 
+define the function :
+
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_obj:
+            return pickle.load(file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
+
+It just opening the file path in read mode and loading the pkl file using dill.
+
+---------------------------------
+
+
+
+Then once we load the data , we are goin to scale the data 
+
+and defined it in a try except block 
+
+---------------------------
+
+
+then in app.py file 
+from src.pipelines.predict_pipeline import CustomData, PredictPipeline
+
+-------------------------
+
+In the app.py define the custom data to accept the input form using the user Interface
+
+data=CustomData(
+            gender=request.form.get('gender'),
+            race_ethnicity=request.form.get('ethnicity'),
+            parental_level_of_education=request.form.get('parental_level_of_education'),
+            lunch=request.form.get('lunch'),
+            test_preparation_course=request.form.get('test_preparation_course'),
+            reading_score=float(request.form.get('writing_score')),
+            writing_score=float(request.form.get('reading_score'))
+
+        )
+
+
+And stored it in the dataframe 
+pred_df = data.get_data_as_data_frame()      
+
+--------------------------------------
+
+
+initialize the predictpipeline in app.py 
+
+And then call the predict function , as soon as we call the funt-->go to the predict fucntion  and the transformation, scaling will be happen and prediction
+
+
+Then store the result in  the results variable and return the output  in the UI 
+
+return render_template('home.html',results=results[0])
+results[0]--> in the list format
 
 ----------------------------------
 
+Now we need to read the value in  home.html
 
 
--------------------------------------
+
+---------------------------------------
+
+Now we are goin to deploy the project in AWS Elastic Beanstalk
+
+we need to do some configuration before we deploy it in elastic beasnstalk
+
+so we created  folder .ebextension  , in that create a python.config file 
+
+It is used to tell the elastic beanstalk instance about what is the entry point of the application  
+
+just for the sake of deployment create a application.py file and copy the contents in app.py 

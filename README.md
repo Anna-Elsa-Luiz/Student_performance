@@ -643,7 +643,10 @@ Through this codepipeline will integrate with the github repository and we will 
 Steps 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 981c5442641e0e48501a479681be903c51e52c11
 1. ElasticBeanstalk 
 2. Create an application 
 3. application name :Student_Performance

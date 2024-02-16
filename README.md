@@ -59,13 +59,12 @@
 
 <p>After hyperparameter optimization, the top two models selected were XGBRegressor and Random Forest Regressors, which were then used in the pipeline. GridSearchCV was used for hyperparameter optimization in the pipeline.</p>
 
-<p>Any modifications can be made inside Config.yaml, which can be accessed at the route /update_model_config.</p>
 
-<p>The <strong>student</strong> is the main package folder, which contains:</p>
 
 <ul>
   <li><strong>Artifact</strong>: Stores all artifacts created from running the application</li>
-  <li><strong>Components</strong>: Contains all components of the machine learning project, including DataIngestion, DataValidation, DataTransformations, ModelTrainer, ModelEvaluation, and ModelPusher</li>
+  <li><strong>Components</strong>: Contains all components of the machine learning project, including 
+   DataIngestion, DataValidation, DataTransformations, ModelTrainer, ModelEvaluation</li>
 </ul>
 
 <p>Custom logger and exceptions are used in the project for better debugging purposes.</p>

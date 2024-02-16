@@ -1,4 +1,81 @@
-# End to End Student Performance Analysis 
+
+<h1>Student Exam Performance Prediction</h1>
+
+<p>This project aims to solve the problem of predicting the outcome of students in final exams using supervised machine learning techniques from Sklearn. It's a regression problem where predictions are made based on a dataset of classroom students' biodata along with their reading and writing scores to predict the maths score of a particular student. Various regression techniques, including XGBoost and Random Forests of decision trees, have been studied and implemented in the project.</p>
+
+<p>For detailed exploratory data analysis (EDA) and feature engineering, check out the notebook directory.</p>
+
+<p>Performance of different regression models, such as Linear Regression, Lasso Regression, Ridge Regression, K-Neighbors Regressor, Decision Tree, Random Forest Regressor, XGBRegressor, CatBoosting Regressor, and AdaBoost Regressor, were compared to determine the best-performing models for our dataset. These models were then utilized to predict the maths score of a particular student based on user input from the Flask application.</p>
+
+<p>The dataset used in this project is sourced from Kaggle and stored in GitHub as well as inside the notebook directory. The features in the dataset include:</p>
+
+<ul>
+  <li>Gender: Student's gender ('Male', 'Female')</li>
+  <li>Race/Ethnicity: Ethnicity of students (Group A, B, C, D, E)</li>
+  <li>Parental Level of Education: Parents' final education (Bachelor's degree, Some college, Master's degree, Associate's degree, High school)</li>
+  <li>Lunch: Whether the student had lunch before the test (Standard or Free/Reduced)</li>
+  <li>Test Preparation Course: Whether the student completed the test preparation course before the test</li>
+  <li>Math Score (integer)</li>
+  <li>Reading Score (integer)</li>
+  <li>Writing Score (integer)</li>
+</ul>
+
+<h2>Installing</h2>
+
+<p>Environment setup:</p>
+<code>conda create --prefix venv python==3.9 -y</code><br>
+<code>conda activate venv/</code><br>
+
+<p>Install requirements and setup:</p>
+<code>pip install -r requirements.txt</code><br>
+
+<p>Run application:</p>
+<code>python app.py</code>
+
+<h2>Built with</h2>
+
+<ul>
+  <li>Flask</li>
+  <li>Python 3.9</li>
+  <li>Machine learning</li>
+  <li>Scikit-learn</li>
+</ul>
+
+<h2>Industrial Use Cases</h2>
+
+<p>Models Used:</p>
+
+<ul>
+  <li>Linear Regression</li>
+  <li>Lasso Regression</li>
+  <li>Ridge Regression</li>
+  <li>K-Neighbors Regressor</li>
+  <li>Decision Tree</li>
+  <li>Random Forest Regressor</li>
+  <li>XGBRegressor</li>
+  <li>CatBoosting Regressor</li>
+  <li>AdaBoost Regressor</li>
+</ul>
+
+<p>After hyperparameter optimization, the top two models selected were XGBRegressor and Random Forest Regressors, which were then used in the pipeline. GridSearchCV was used for hyperparameter optimization in the pipeline.</p>
+
+<p>Any modifications can be made inside Config.yaml, which can be accessed at the route /update_model_config.</p>
+
+<p>The <strong>student</strong> is the main package folder, which contains:</p>
+
+<ul>
+  <li><strong>Artifact</strong>: Stores all artifacts created from running the application</li>
+  <li><strong>Components</strong>: Contains all components of the machine learning project, including DataIngestion, DataValidation, DataTransformations, ModelTrainer, ModelEvaluation, and ModelPusher</li>
+</ul>
+
+<p>Custom logger and exceptions are used in the project for better debugging purposes.</p>
+
+
+
+
+
+
+# Steps I followed and information reagrding some important files  
 
 ----------------------------------
 

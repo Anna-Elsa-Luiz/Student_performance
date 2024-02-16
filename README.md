@@ -610,3 +610,60 @@ so we created  folder .ebextension  , in that create a python.config file
 It is used to tell the elastic beanstalk instance about what is the entry point of the application  
 
 just for the sake of deployment create a application.py file and copy the contents in app.py 
+
+make sure to remove the debug=True while deploying 
+
+
+-----------------------------
+
+now we are going to deploy in aws 
+
+Using Elastic Beanstalk : server or cloud environment of some instance  (linux machine)
+
+The only thing that elasticbeanstalk requires is the configuration we gave in python.config in.ebextensions 
+
+
+In the github repository you have the code and should be able to go to the elasticbeanstalk.
+Inorder to do that we have codepipeline :
+
+Codepipeline basically commit or deploy it in the aws automaticallly as soon as we click a button inside the elastic beanstalk which is like a linux machine. 
+
+so that whenever any changes in the github repo, the codepipeline will automattically commmit it to the elasticbeanstalk
+
+
+It is a  continous delivery pipeline 
+
+1. first we will create a elastic beanstalk instance which can be a linux machine and create a enviroment and do the setup 
+
+2. we are going to create a code pipeline 
+Through this codepipeline will integrate with the github repository and we will continue the depoyment to the elastic beanstalk 
+
+
+
+Steps 
+
+
+
+1. ElasticBeanstalk 
+2. Create an application 
+3. application name :Student_Performance
+4. platform:python
+5. No need to change the default values 
+6. create application
+7. can skip the steps in btw and submit 
+
+Now we are goin to create the  code pipeline 
+8. codepipeline
+9. create pipline 
+10. pipeline name: studentperformance 
+11. no need to chnage the default or advanced settings 
+12. source: github version 1 
+13. connect to github: authoeize : confirm 
+14. You have successfully configured the action with the provider.
+15. select the repo name: Anna-Elsa-Luiz/Student_performance
+16. branch: master
+17. skip the build stage 
+18. deploy provider: AWS Elastic Beanstalk
+19. region: US East Virginia 
+20. 
+

@@ -74,7 +74,7 @@
 
 
 
-### Steps I followed and information reagrding some important files  
+### Steps I followed and information regrding some important files  
 
 ----------------------------------
 

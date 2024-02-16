@@ -640,33 +640,131 @@ Through this codepipeline will integrate with the github repository and we will 
 
 
 
-Steps 
+ 
 
 
 <<<<<<< HEAD
 
 =======
 >>>>>>> 981c5442641e0e48501a479681be903c51e52c11
+
+Steps
+
 1. ElasticBeanstalk 
-2. Create an application 
+
+2. Create an application
+
 3. application name :Student_Performance
+
 4. platform:python
+
 5. No need to change the default values 
+
 6. create application
+
 7. can skip the steps in btw and submit 
 
 Now we are goin to create the  code pipeline 
+
 8. codepipeline
+
 9. create pipline 
+
 10. pipeline name: studentperformance 
+
 11. no need to chnage the default or advanced settings 
-12. source: github version 1 
+
+12. source: github version 1
+
 13. connect to github: authoeize : confirm 
+
 14. You have successfully configured the action with the provider.
+
 15. select the repo name: Anna-Elsa-Luiz/Student_performance
+
 16. branch: master
+GitHub webhooks (recommended)
+
 17. skip the build stage 
 18. deploy provider: AWS Elastic Beanstalk
 19. region: US East Virginia 
-20. 
+20. appplication name : Student_Performance_Aws
+21. env name: StudentPerformanceAws-env
+22. create pipeline 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------
+
+
+Azure deployment
+
+
+Converting my web application into Docker image 
+
+Once it is converted into Docker image , it is going to deployed in the serveer we are going to use . 
+
+Docker image which is a private image , willl deployed into container registry.
+
+once we upload the docker image , web app will be pulled over in Azure 
+
+-------------------------------
+
+AZURE DEPLOYMENT 
+
+1. Conatiner Registry
+2. Docker Setup in local and push container registry 
+3. Azure Web app with container 
+4. Configured the github Deployment Center 
+
+
+Azure--> Container registries --> new container registry ---> free trail ---> Resouce group: Create new: testdocker-->registry name: testdockeranna: this registry name will be holding your entire docker images. 
+
+next>>> 
+
+create 
+
+Created a container registry where all the docker images will be conatined or put it here 
+
+Go to resource 
+
+access keys ---> enable Admin user 
+
+user name : testdockeranna
+password1 : 57+lj0Gm2bHqc0I7P6va8VQiJfQxyLGoOEkeWXsORe+ACRBiAH99
+
+password2: dz6l8xydbI/je/FgAJISmhb+5iw2fJAKllCLgfNZ4y+ACRBgKab3
+
+
+create new resource--> web app --> ceate --> 
+resouce group name : testdocker 
+name: testdockeranna 
+
+publish: Docker Containers 
+
+next>> dockers:
+Single container 
+Azure container repository

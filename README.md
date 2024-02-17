@@ -809,6 +809,8 @@ once we upload the docker image , web app will be pulled over in Azure
 
 -------------------------------
 
+Pending.....
+
 AZURE DEPLOYMENT 
 
 1. Conatiner Registry
